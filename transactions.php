@@ -32,7 +32,7 @@
                         <td>Ranjan Sharma</td>
                         <td>ranjansharma@gmail.com</td>
                         <td>5500</td>
-                        <td>12-16-2000</td>
+                        <td><?php echo date("h:i:sA",time()); ?></td>
                     </tr>
 
                 </tbody>
