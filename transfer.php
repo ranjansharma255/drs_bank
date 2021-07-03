@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="css/content.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/transfer.css">
     <link rel="stylesheet" href="css/customer.css">
+    <link rel="stylesheet" href="css/transferstyle.css">
 
 </head>
 <body>
@@ -19,9 +19,9 @@
         <div class="content">
             <h1 class = "c-heading">Transfer</h1>
             <hr>
-            <form action="transferdata.php" method = "post">
-            <h2>From<h2>
-            <table id = "form-table">
+            <form action="transferdata.php" method = "post" class = "transfer-frm">
+            <h2 id = "from">From<h2>
+            <table id = "customers-table">
                 <thead>
                     <th>Id</th>
                     <th>Name</th>
@@ -37,13 +37,20 @@
                     </tr>
                 </tbody>
             </table>
-            <h2>To</h2>
+            <h2 id="to">To</h2>
             <select class = "drop-down">
-                <options
-
-
+                <option value = "" selected disabled>Select Recipient</option>
+                <option value = "1">Ranjan Sharma</option>
+                <option value = "2">Varshith</option>
             </select>
-            <a href="transactions.php" ><button class = "btn2">View All Transactions</button> </a>
+            <input type="submit" value="Transfer" class = "transfer-btn">
+            <input type="text" placeholder="Amount" required id ="amount">
+            <div id = "msg">
+            <h3>Message</h3>
+            <p>
+                Balance insufficient
+            </p>
+            </div>
             </form>   
         </div>
     </section>
