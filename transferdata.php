@@ -15,10 +15,18 @@
 <body>
     <?php include 'php/navbar.php'; ?>
     <section class = "container">
+        <?php    
+            include 'config.php';
+            
+            $sql = "SELECT * FROM transaction ORDER BY sno DESC LIMIT 1";
+
+            $result = mysqli_query($conn, $sql) or die("Query Unsuccessful");
+            $row = mysqli_fetch_array($result);
+        ?>
         <div class="content">
             <h1 class = "c-heading">Transaction Successful</h1>
             <hr>
-            <p>Amount Rs. <span id = "amt-sent"><strong>2500</strong></span> /- has being successfuly transfered to <span id = "rep-name"><strong>Varshith</strong></span> 
+            <p>Amount Rs. <span id = "amt-sent"><strong><?php echo $row['amount']; ?></strong></span> /- has being successfuly transfered to <span id = "rep-name"><strong><?php echo $row['receiver']; ?></strong></span> 
             <a href="customers.php" ><button class = "btn1">View All Customer</button> </a>
         </div>
     </section>
