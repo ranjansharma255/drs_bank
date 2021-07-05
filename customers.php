@@ -18,6 +18,16 @@
         <div class="content">
             <h1 class = "c-heading">All Customers</h1>
             <hr>
+            <?php
+                include 'config.php';
+
+                $sql = "SELECT * FROM customers";
+
+                $result = mysqli_query($conn, $sql) or die("Query Unsuccessful");
+
+                if(mysqli_num_rows($result) > 0) {   
+
+            ?>
             <table id = "customers-table">
                 <thead>
                     <th>Id</th>
@@ -26,110 +36,28 @@
                     <th>Available Balance</th>
                     <th>Operation</th>
                 </thead>
-
                 <tbody>
+                    <?php 
+
+                        while($row = mysqli_fetch_assoc($result)) {
+
+                     ?>
                     <tr>
-                        <td>1</td>
-                        <td>Ranjan Sharma</td>
-                        <td>ranjansharma@gmail.com</td>
-                        <td>5500</td>
+                        <td><?php echo $row['cid']; ?></td>
+                        <td><?php echo $row['cname']; ?></td>
+                        <td><?php echo $row['cmail']; ?></td>
+                        <td><?php echo $row['abalance']; ?></td>
                         <td>
-                            <a href="transfer.php" class = "btn-transfer">Transfer</a>
+                            <a href="transfer.php?id=<?php echo $row['cid']; ?>" class = "btn-transfer">Transfer</a>
                         </td>
                     </tr>
-
-                    <tr>
-                        <td>2</td>
-                        <td>Ranjan Sharma</td>
-                        <td>ranjansharma@gmail.com</td>
-                        <td>5500</td>
-                        <td>
-                            <a href="transfer.php" class = "btn-transfer">Transfer</a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>3</td>
-                        <td>Ranjan Sharma</td>
-                        <td>ranjansharma@gmail.com</td>
-                        <td>5500</td>
-                        <td>
-                            <a href="transfer.php" class = "btn-transfer">Transfer</a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>4</td>
-                        <td>Ranjan Sharma</td>
-                        <td>ranjansharma@gmail.com</td>
-                        <td>5500</td>
-                        <td>
-                            <a href="transfer.php" class = "btn-transfer">Transfer</a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>5</td>
-                        <td>Ranjan Sharma</td>
-                        <td>ranjansharma@gmail.com</td>
-                        <td>5500</td>
-                        <td>
-                            <a href="transfer.php" class = "btn-transfer">Transfer</a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>6</td>
-                        <td>Ranjan Sharma</td>
-                        <td>ranjansharma@gmail.com</td>
-                        <td>5500</td>
-                        <td>
-                            <a href="transfer.php" class = "btn-transfer">Transfer</a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>7</td>
-                        <td>Ranjan Sharma</td>
-                        <td>ranjansharma@gmail.com</td>
-                        <td>5500</td>
-                        <td>
-                            <a href="transfer.php" class = "btn-transfer">Transfer</a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>8</td>
-                        <td>Ranjan Sharma</td>
-                        <td>ranjansharma@gmail.com</td>
-                        <td>5500</td>
-                        <td>
-                            <a href="transfer.php" class = "btn-transfer">Transfer</a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>9</td>
-                        <td>Ranjan Sharma</td>
-                        <td>ranjansharma@gmail.com</td>
-                        <td>5500</td>
-                        <td>
-                            <a href="transfer.php" class = "btn-transfer">Transfer</a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>10</td>
-                        <td>Ranjan Sharma</td>
-                        <td>ranjansharma@gmail.com</td>
-                        <td>5500</td>
-                        <td>
-                            <a href="transfer.php" class = "btn-transfer">Transfer</a>
-                        </td>
-                    </tr>
-
+                <?php } ?>
                 </tbody>
-            </table>    
+            </table> 
+            <?php } else {
+                    echo "No rows in the table";
+                } 
+            ?>   
         </div>
     </section>
     <?php include 'php/footer.php'; ?>
